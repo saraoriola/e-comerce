@@ -1,13 +1,15 @@
 const { Product, Category, Review } = require('../models/index.js');
 
 const ProductsController = {
+  // Create a new product
   create(req, res) {
     Product.create(req.body)
       .then((product) =>
-        res.status(201).send({ message: "Producto creado con éxito", product })
+        res.status(201).send({ message: "Product created successfully", product })
       )
       .catch((err) => console.error(err));
   },
+  // Get all products with associated Category and Review data
   getAll(req, res) {
     Product.findAll({
       include: [Category, Review],
@@ -18,30 +20,32 @@ const ProductsController = {
         res.status(500).send(err);
       });
   },
+  // Delete a product and its reviews
   async delete(req, res) {
     try {
       const { id } = req.params;
       
-      // Eliminar el producto
+      // Delete the product
       await Product.destroy({
         where: {
           id,
         },
       });
 
-      // Eliminar las reviews del producto
+      // Delete the reviews of the product
       await Review.destroy({
         where: {
           productId: id,
         },
       });
 
-      res.send("El producto ha sido eliminado con éxito");
+      res.send("Product has been successfully deleted");
     } catch (error) {
       console.error(error);
       res.status(500).send(error);
     }
   },
+  // Update a product
   async update(req, res) {
     try {
       const { id } = req.params;
@@ -56,7 +60,7 @@ const ProductsController = {
         include: [Category, Review],
       });
 
-      res.send({ message: "Producto actualizado con éxito", product });
+      res.send({ message: "Product updated successfully", product });
     } catch (error) {
       console.error(error);
       res.status(500).send(error);

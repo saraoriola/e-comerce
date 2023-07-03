@@ -1,13 +1,15 @@
 const { Order, User, Product } = require('../models/index.js');
 
 const OrdersController = {
+  // Create a new order
   create(req, res) {
     Order.create(req.body)
       .then((order) =>
-        res.status(201).send({ message: "Orden creada con éxito", order })
+        res.status(201).send({ message: "Order created successfully", order })
       )
       .catch((err) => console.error(err));
   },
+  // Get all orders with associated User and Product data
   getAll(req, res) {
     Order.findAll({
       include: [User, Product],
@@ -18,6 +20,7 @@ const OrdersController = {
         res.status(500).send(err);
       });
   },
+  // Delete an order
   async delete(req, res) {
     try {
       const { id } = req.params;
@@ -28,12 +31,13 @@ const OrdersController = {
         },
       });
 
-      res.send("La orden ha sido eliminada con éxito");
+      res.send("Order has been successfully deleted");
     } catch (error) {
       console.error(error);
       res.status(500).send(error);
     }
   },
+  // Update an order
   async update(req, res) {
     try {
       const { id } = req.params;
@@ -48,7 +52,7 @@ const OrdersController = {
         include: [User, Product],
       });
 
-      res.send({ message: "Orden actualizada con éxito", order });
+      res.send({ message: "Order updated successfully", order });
     } catch (error) {
       console.error(error);
       res.status(500).send(error);

@@ -4,10 +4,10 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class ShoppingCart extends Model {
     static associate(models) {
-      // Relación de "ShoppingCart" a "User" (uno a uno)
+      // Relationship between "ShoppingCart" and "User" (one-to-one)
       ShoppingCart.belongsTo(models.User, { foreignKey: 'user_id' });
 
-      // Relación de "ShoppingCart" a "Products" (uno a uno)
+      // Relationship between "ShoppingCart" and "Products" (one-to-one)
       ShoppingCart.belongsTo(models.Products, { foreignKey: 'product_id' });
     }
   }

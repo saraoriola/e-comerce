@@ -1,14 +1,16 @@
 const { User, Post } = require("../models/index.js");
 
 const UserController = {
+  // Create a new user
   create(req, res) {
     req.body.role = "user";
     User.create(req.body)
       .then((user) =>
-        res.status(201).send({ message: "Usuario creado con éxito", user })
+        res.status(201).send({ message: "User created successfully", user })
       )
       .catch((err) => console.error(err));
   },
+  // Get all users with associated Post data
   getAll(req, res) {
     User.findAll({
       include: [Post],
@@ -19,26 +21,28 @@ const UserController = {
         res.status(500).send(err);
       });
   },
+  // Delete a user and their posts
   async delete(req, res) {
     try {
-      // Elimino el usuario
+      // Delete the user
       await User.destroy({
         where: {
           id: req.params.id,
         },
       });
-      // Elimino los posts del usuario
+      // Delete the posts of the user
       await Post.destroy({
         where: {
           UserId: req.params.id,
         },
       });
-      res.send("El usuario ha sido eliminado con éxito");
+      res.send("User has been successfully deleted");
     } catch (error) {
       console.error(error);
       res.status(500).send(error);
     }
   },
+  // Update a user
   async update(req, res) {
     try {
       await User.update(req.body, {
@@ -47,7 +51,7 @@ const UserController = {
         },
       });
       const user = await User.findByPk(req.params.id);
-      res.send({ message: "Usuario actualizado con éxito", user });
+      res.send({ message: "User updated successfully", user });
     } catch (error) {
       console.error(error);
       res.status(500).send(error);

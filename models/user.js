@@ -4,13 +4,13 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
-      // Relación de "User" a "Products" (muchos a muchos) a través de la tabla intermedia "reviews"
+      // Relationship between "User" and "Products" (many-to-many) through the intermediate table "reviews"
       User.belongsToMany(models.Products, { through: models.Review, foreignKey: 'user_id' });
 
-      // Relación de "User" a "ShoppingCart" (uno a muchos)
+      // Relationship between "User" and "ShoppingCart" (one-to-many)
       User.hasMany(models.ShoppingCart, { foreignKey: 'user_id' });
 
-      // Relación de "User" a "Order" (uno a muchos)
+      // Relationship between "User" and "Order" (one-to-many)
       User.hasMany(models.Order, { foreignKey: 'user_id' });
     }
   }

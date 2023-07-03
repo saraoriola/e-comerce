@@ -2,13 +2,15 @@ const { Category, Product } = require('../models/index.js');
 
 const CategoriesController = {
   create(req, res) {
+    // Create a new category
     Category.create(req.body)
       .then((category) =>
-        res.status(201).send({ message: "Categoría creada con éxito", category })
+        res.status(201).send({ message: "Category created successfully", category })
       )
       .catch((err) => console.error(err));
   },
   getAll(req, res) {
+    // Get all categories with their associated products
     Category.findAll({
       include: [Product],
     })
@@ -22,21 +24,21 @@ const CategoriesController = {
     try {
       const { id } = req.params;
       
-      // Eliminar la categoría
+      // Delete the category
       await Category.destroy({
         where: {
           id,
         },
       });
 
-      // Eliminar los productos de la categoría
+      // Delete the products of the category
       await Product.destroy({
         where: {
           categoryId: id,
         },
       });
 
-      res.send("La categoría ha sido eliminada con éxito");
+      res.send("Category has been successfully deleted");
     } catch (error) {
       console.error(error);
       res.status(500).send(error);
@@ -46,17 +48,19 @@ const CategoriesController = {
     try {
       const { id } = req.params;
       
+      // Update the category
       await Category.update(req.body, {
         where: {
           id,
         },
       });
 
+      // Get the updated category with its associated products
       const category = await Category.findByPk(id, {
         include: [Product],
       });
 
-      res.send({ message: "Categoría actualizada con éxito", category });
+      res.send({ message: "Category updated successfully", category });
     } catch (error) {
       console.error(error);
       res.status(500).send(error);

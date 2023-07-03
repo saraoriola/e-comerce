@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-// Importa el controlador de reseñas
+// Import the review controller
 const ReviewsController = require('../controllers/ReviewController');
 
-// Rutas para reseñas
-router.post('/', ReviewsController.create);
-router.get('/', ReviewsController.getAll);
-router.delete('/:id', ReviewsController.delete);
-router.put('/:id', ReviewsController.update);
+// Routes for reviews
+router.post('/', ReviewsController.create); // Route to create a new review
+router.get('/', ReviewsController.getAll); // Route to get all reviews
+router.delete('/:id', ReviewsController.delete); // Route to delete a review by its ID
+router.put('/:id', ReviewsController.update); // Route to update a review by its ID
 
 module.exports = router;
