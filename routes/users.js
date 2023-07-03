@@ -1,10 +1,13 @@
-const express = require("express")
-const UserController = require("../controllers/UserController")
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
-router.post("/",UserController.create)
-router.get("/",UserController.getAll)
-router.put("/id/:id",UserController.update)
-router.delete("/id/:id",UserController.delete)
+// Importa el controlador de usuarios
+const UserController = require('../controllers/UserController');
+
+// Rutas para usuarios
+router.post('/', UserController.create);
+router.get('/', UserController.getAll);
+router.delete('/:id', UserController.delete);
+router.put('/:id', UserController.update);
 
 module.exports = router;

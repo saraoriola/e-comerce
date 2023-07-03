@@ -21,13 +21,13 @@ const UserController = {
   },
   async delete(req, res) {
     try {
-      //elimino el usuario
+      // Elimino el usuario
       await User.destroy({
         where: {
           id: req.params.id,
         },
       });
-      //elimino los posts del usuario
+      // Elimino los posts del usuario
       await Post.destroy({
         where: {
           UserId: req.params.id,
@@ -46,8 +46,8 @@ const UserController = {
           id: req.params.id,
         },
       });
-      const user = await User.findByPk(req.params.id)
-      res.send({message:"Usuario actualizado con éxito",user});
+      const user = await User.findByPk(req.params.id);
+      res.send({ message: "Usuario actualizado con éxito", user });
     } catch (error) {
       console.error(error);
       res.status(500).send(error);
