@@ -5,13 +5,13 @@ module.exports = (sequelize, DataTypes) => {
   class Category extends Model {
     static associate(models) {
       // Relationship between "Category" and "Products" (one-to-many)
-      Category.hasMany(models.Products, { foreignKey: 'category_id' });
+      Category.hasMany(models.Products, { foreignKey: 'categoryId' });
     }
   }
 
   Category.init(
     {
-      category_name: DataTypes.STRING,
+      categoryName: DataTypes.STRING,
       description: DataTypes.STRING
     },
     {

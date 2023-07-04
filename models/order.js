@@ -5,17 +5,17 @@ module.exports = (sequelize, DataTypes) => {
   class Order extends Model {
     static associate(models) {
       // Relationship between "Order" and "User" (many-to-one)
-      Order.belongsTo(models.User, { foreignKey: 'user_id' });
+      Order.belongsTo(models.User, { foreignKey: 'userId' });
 
       // Relationship between "Order" and "Products" (many-to-one)
-      Order.belongsTo(models.Products, { foreignKey: 'product_id' });
+      Order.belongsTo(models.Products, { foreignKey: 'productId' });
     }
   }
 
   Order.init(
     {
-      user_id: DataTypes.INTEGER,
-      product_id: DataTypes.INTEGER,
+      userId: DataTypes.INTEGER,
+      productId: DataTypes.INTEGER,
       shipping_address: DataTypes.STRING,
       total_price: DataTypes.STRING,
       total_quantity: DataTypes.INTEGER

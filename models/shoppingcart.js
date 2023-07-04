@@ -5,17 +5,17 @@ module.exports = (sequelize, DataTypes) => {
   class ShoppingCart extends Model {
     static associate(models) {
       // Relationship between "ShoppingCart" and "User" (one-to-one)
-      ShoppingCart.belongsTo(models.User, { foreignKey: 'user_id' });
+      ShoppingCart.belongsTo(models.User, { foreignKey: 'userId' });
 
       // Relationship between "ShoppingCart" and "Products" (one-to-one)
-      ShoppingCart.belongsTo(models.Products, { foreignKey: 'product_id' });
+      ShoppingCart.belongsTo(models.Products, { foreignKey: 'productId' });
     }
   }
 
   ShoppingCart.init(
     {
-      user_id: DataTypes.INTEGER,
-      product_id: DataTypes.INTEGER,
+      userId: DataTypes.INTEGER,
+      productId: DataTypes.INTEGER,
       quantity: DataTypes.INTEGER
     },
     {
