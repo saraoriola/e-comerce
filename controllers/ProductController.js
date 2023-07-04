@@ -2,15 +2,30 @@ const { Product, Category, Review } = require('../models/index.js');
 
 const ProductsController = {
   // Create a new product
-  create(req, res) {
-    Product.create(req.body)
-      .then((product) =>
-        res.status(201).send({ message: "Product created successfully", product })
-      )
-      .catch((err) => console.error(err));
+  createProduct: async (req, res) => {
+    try {
+      const { productName, description, categoryId, price, stock } = req.body;
+      if (!productName || !description || !categoryId || !price || !stock) {
+        return res.status(400).json({ message: "All fields are required" });
+      }
+  
+      const product = await Product.create({
+        productName,
+        description,
+        categoryId,
+        price,
+        stock,
+      });
+  
+      res.status(201).json({ message: "Product created successfully", product });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Error creating the product" });
+    }
   },
+
   // Get all products with associated Category and Review data
-  getAll(req, res) {
+  getAll: (req, res) => {
     Product.findAll({
       include: [Category, Review],
     })
@@ -20,8 +35,57 @@ const ProductsController = {
         res.status(500).send(err);
       });
   },
+
+  // Get a product by its ID
+  getProductById: (req, res) => {
+    const { id } = req.params;
+    Product.findByPk(id, { include: [Category, Review] })
+      .then((product) => {
+        if (!product) {
+          return res.status(404).json({ message: "Product not found" });
+        }
+        res.send(product);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send(err);
+      });
+  },
+
+  // Update a product
+  updateProduct: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { productName, description, categoryId, price, stock } = req.body;
+      if (!productName || !description || !categoryId || !price || !stock) {
+        return res.status(400).json({ message: "All fields are required" });
+      }
+
+      const product = await Product.findOne({ where: { id } });
+      if (!product) {
+        return res.status(404).json({ message: "Product not found" });
+      }
+
+      await Product.update(
+        {
+          productName,
+          description,
+          categoryId,
+          price,
+          stock,
+        },
+        { where: { id } }
+      );
+
+      res.json({ message: "Product updated successfully" });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Error updating the product" });
+    }
+  },
+
   // Delete a product and its reviews
-  async delete(req, res) {
+  deleteProduct: async (req, res) => {
     try {
       const { id } = req.params;
       
@@ -39,32 +103,60 @@ const ProductsController = {
         },
       });
 
-      res.send("Product has been successfully deleted");
+      res.send("Product deleted successfully");
     } catch (error) {
       console.error(error);
       res.status(500).send(error);
     }
   },
-  // Update a product
-  async update(req, res) {
-    try {
-      const { id } = req.params;
-      
-      await Product.update(req.body, {
-        where: {
-          id,
+
+  // Filter products by name
+  filterProductsByName: (req, res) => {
+    const { name } = req.query;
+    Product.findAll({
+      where: {
+        productName: {
+          [Op.like]: `%${name}%`,
         },
+      },
+      include: [Category, Review],
+    })
+      .then((products) => res.send(products))
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send(err);
       });
+  },
 
-      const product = await Product.findByPk(id, {
-        include: [Category, Review],
+  // Filter products by price
+  filterProductsByPrice: (req, res) => {
+    const { min, max } = req.query;
+    Product.findAll({
+      where: {
+        price: {
+          [Op.between]: [min, max],
+        },
+      },
+      include: [Category, Review],
+    })
+      .then((products) => res.send(products))
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send(err);
       });
+  },
 
-      res.send({ message: "Product updated successfully", product });
-    } catch (error) {
-      console.error(error);
-      res.status(500).send(error);
-    }
+  // Sort products by price (descending)
+  sortProductsByPrice: (req, res) => {
+    Product.findAll({
+      include: [Category, Review],
+      order: [["price", "DESC"]],
+    })
+      .then((products) => res.send(products))
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send(err);
+      });
   },
 };
 
