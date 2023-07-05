@@ -7,7 +7,8 @@ app.use(express.json());
 
 // Importación de rutas y asignación de prefijos
 app.use("/categories", require("./routes/categories"));
-
+app.use("/products", require("./routes/products"));
 
 // Iniciar el servidor
 app.listen(PORT, () => console.log(`Servidor levantado en el puerto ${PORT}`));
+    

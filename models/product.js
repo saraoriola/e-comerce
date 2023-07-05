@@ -10,8 +10,6 @@ module.exports = (sequelize, DataTypes) => {
       // Relationship between "Product" and "Order" (many-to-many)
       // mirar clase del martes para la relacion es muchos a muchos
       // Product.
-
-  
     }
   }
 
