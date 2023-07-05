@@ -4,18 +4,19 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class ShoppingCart extends Model {
     static associate(models) {
+      //EN STAND BY, NO TOCAR HASTA QUE ESTE TODO LO DEMAS😆
       // Relationship between "ShoppingCart" and "User" (one-to-one)
-      ShoppingCart.belongsTo(models.User, { foreignKey: 'userId' });
+      // ShoppingCart.belongsTo(models.User, { foreignKey: 'userId' });
 
-      // Relationship between "ShoppingCart" and "Products" (one-to-one)
-      ShoppingCart.belongsTo(models.Products, { foreignKey: 'productId' });
+      // // Relationship between "ShoppingCart" and "Products" (one-to-one)
+      // ShoppingCart.belongsTo(models.Products, { foreignKey: 'productId' });
     }
   }
 
   ShoppingCart.init(
     {
-      userId: DataTypes.INTEGER,
-      productId: DataTypes.INTEGER,
+      UserId: DataTypes.INTEGER,
+      ProductId: DataTypes.INTEGER,
       quantity: DataTypes.INTEGER
     },
     {

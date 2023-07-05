@@ -9,7 +9,9 @@ module.exports = {
         email: "johndoe@example.com",
         password: "password123",
         address: "123 Main St",
-        role: "customer"
+        role: "customer",
+        createdAt:new Date(),
+        updatedAt:new Date()
       },
       {
         name: "Jane",
@@ -17,7 +19,9 @@ module.exports = {
         email: "janesmith@example.com",
         password: "securepass",
         address: "456 Elm St",
-        role: "admin"
+        role: "admin",
+        createdAt:new Date(),
+        updatedAt:new Date()
       },
       {
         name: "Michael",
@@ -25,7 +29,9 @@ module.exports = {
         email: "michaeljohnson@example.com",
         password: "mysecretpassword",
         address: "789 Oak St",
-        role: "customer"
+        role: "customer",
+        createdAt:new Date(),
+        updatedAt:new Date()
       },
       {
         name: "Emily",
@@ -33,7 +39,9 @@ module.exports = {
         email: "emilybrown@example.com",
         password: "12345678",
         address: "987 Pine St",
-        role: "customer"
+        role: "customer",
+        createdAt:new Date(),
+        updatedAt:new Date()
       },
       {
         name: "William",
@@ -41,7 +49,9 @@ module.exports = {
         email: "williammiller@example.com",
         password: "password",
         address: "654 Cedar St",
-        role: "admin"
+        role: "admin",
+        createdAt:new Date(),
+        updatedAt:new Date()
       },
       {
         name: "Olivia",
@@ -49,7 +59,9 @@ module.exports = {
         email: "oliviadavis@example.com",
         password: "secretpass",
         address: "321 Birch St",
-        role: "customer"
+        role: "customer",
+        createdAt:new Date(),
+        updatedAt:new Date()
       },
       {
         name: "James",
@@ -57,7 +69,9 @@ module.exports = {
         email: "jamesanderson@example.com",
         password: "pass123",
         address: "111 Maple St",
-        role: "customer"
+        role: "customer",
+        createdAt:new Date(),
+        updatedAt:new Date()
       },
       {
         name: "Sophia",
@@ -65,7 +79,9 @@ module.exports = {
         email: "sophiawilson@example.com",
         password: "mysecretpass",
         address: "222 Oak St",
-        role: "customer"
+        role: "customer",
+        createdAt:new Date(),
+        updatedAt:new Date()
       },
       {
         name: "Benjamin",
@@ -73,7 +89,9 @@ module.exports = {
         email: "benjamintaylor@example.com",
         password: "password1234",
         address: "333 Elm St",
-        role: "customer"
+        role: "customer",
+        createdAt:new Date(),
+        updatedAt:new Date()
       },
       {
         name: "Ava",
@@ -81,7 +99,9 @@ module.exports = {
         email: "avajohnson@example.com",
         password: "securepassword",
         address: "444 Pine St",
-        role: "customer"
+        role: "customer",
+        createdAt:new Date(),
+        updatedAt:new Date()
       }
     ]
     );
