@@ -1,71 +1,115 @@
 const { Category, Product } = require('../models/index.js');
+const { Op } = require('sequelize');
+
 
 const CategoriesController = {
-  create(req, res) {
-    // Create a new category
-    Category.create(req.body)
-      .then((category) =>
-        res.status(201).send({ message: "Category created successfully", category })
-      )
-      .catch((err) => console.error(err));
+  // To CREATE a CATEGORY
+  async create(req, res) {
+    try {
+      const category = await Category.create(req.body);
+      res.status(201).send({ message: "Category created successfully", category });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({ message: "Error creating category" });
+    }
   },
-  getAll(req, res) {
-    // Get all categories with their associated products
-    Category.findAll({
-      include: [Product],
-    })
-      .then((categories) => res.send(categories))
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send(err);
+  
+  // To UPDATE a CATEGORY 
+  async update(req, res) {
+    try {
+      const { id } = req.params;
+      await Category.update(req.body, {
+        where: {
+          id,
+        },
       });
+ 
+      const category = await Category.findByPk(id, {
+        include: [Product],
+      });
+ 
+      res.send({ message: "Category updated successfully", category });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({ message: "Error updating category" });
+    }
   },
+ 
+  // To DELETE a CATEGORY
   async delete(req, res) {
     try {
       const { id } = req.params;
-      
-      // Delete the category
       await Category.destroy({
         where: {
           id,
         },
       });
-
-      // Delete the products of the category
       await Product.destroy({
         where: {
           categoryId: id,
         },
       });
-
+ 
       res.send("Category has been successfully deleted");
     } catch (error) {
       console.error(error);
       res.status(500).send(error);
     }
   },
-  async update(req, res) {
+ 
+  // To GET ALL with PRODUCT
+  async getAll(req, res) {
     try {
-      const { id } = req.params;
-      
-      // Update the category
-      await Category.update(req.body, {
-        where: {
-          id,
-        },
-      });
-
-      // Get the updated category with its associated products
-      const category = await Category.findByPk(id, {
+      const categories = await Category.findAll({
         include: [Product],
       });
-
-      res.send({ message: "Category updated successfully", category });
+      res.send(categories);
     } catch (error) {
       console.error(error);
       res.status(500).send(error);
     }
   },
+
+  // To GET a CATEGORY by ID
+  async getById(req, res) {
+    try {
+      const { id } = req.params;
+      const category = await Category.findByPk(id, {
+        include: [Product],
+      });
+
+      if (!category) {
+        return res.status(404).send({ message: "Category not found" });
+      }
+
+      res.send(category);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send(error);
+    }
+  },
+
+  // To GET a CATEGORY by Name
+  async getByName(req, res) {
+    try {
+      const { name } = req.query;
+      const categories = await Category.findAll({
+        where: {
+          categoryName: {
+            [Op.like]: `%${name}%`,
+          },
+        },
+        include: [Product],
+      });
+  
+      res.send(categories);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send(error);
+    }
+  }
+
 };
 
 module.exports = CategoriesController;
+

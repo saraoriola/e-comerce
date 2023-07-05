@@ -16,9 +16,11 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0",
-    "mysql2": "^3.4.4",
+    "jsonwebtoken": "^9.0.1",
+    "mysql2": "^3.4.5",
+    "nodemailer": "^6.9.3",
     "sequelize": "^6.32.1"
   }
 }
