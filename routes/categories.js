@@ -5,10 +5,10 @@ const router = express.Router();
 const CategoryController = require('../controllers/CategoryController');
 
 // Routes for categories
-// POST
+// CREATE
 router.post('/', CategoryController.create); // Route to create a new category - TEST OK
 
-// GET
+// READ
 router.get('/', CategoryController.getAll); // Route to get all categories - TEST OK
 router.get('/id/:id', CategoryController.getById); // Route to get a category by its ID - TEST OK
 router.get('/search', CategoryController.getByName); // Route to get categories by name - TEST OK

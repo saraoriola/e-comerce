@@ -3,7 +3,7 @@ const { Op } = require('sequelize');
 
 
 const CategoriesController = {
-  // To CREATE a CATEGORY
+  // To CREATE a CATEGORY 
   async create(req, res) {
     try {
       const category = await Category.create(req.body);
