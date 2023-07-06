@@ -8,9 +8,8 @@ const ProductController = require('../controllers/ProductController');
 // CREATE
 router.post('/products', ProductController.createProduct);
 
-
 // READ
-router.get('/products', ProductController.getProducts); //DUDA
+router.get('/products/', ProductController.getProducts);
 router.get('/products/:id', ProductController.getProductById);
 router.get('/products/search', ProductController.searchProductByName);
 router.get('/products/search/price', ProductController.searchProductByPriceRange);
@@ -19,11 +18,9 @@ router.get('/products/price/descending', ProductController.getProductsByPriceDes
 // UPDATE
 router.put('/products/:id', ProductController.updateProduct);
 
-
 // DELETE
 router.delete('/products/:id', ProductController.deleteProduct);
 
-// Additional route
 router.get('/products/names', ProductController.getOnlyNamesOfProductsAndCategories);
 
 module.exports = router;

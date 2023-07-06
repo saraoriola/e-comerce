@@ -8,6 +8,8 @@ module.exports = (sequelize, DataTypes) => {
       Product.belongsTo(models.Category);
 
       // Relationship between "Product" and "Order" (many-to-many)
+
+      
       // mirar clase del martes para la relacion es muchos a muchos
       // Product.
     }
@@ -29,3 +31,5 @@ module.exports = (sequelize, DataTypes) => {
 
   return Product;
 };
+
+
