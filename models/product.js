@@ -4,14 +4,14 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
     static associate(models) {
-      // Relationship between "Product" and "Category" (one-to-many)
-      Product.belongsTo(models.Category);
+      // Relación Many-to-One con la tabla "Category"
+      Product.belongsTo(models.Category, { foreignKey: 'categoryId' });
 
-      // Relationship between "Product" and "Order" (many-to-many)
-
-      
-      // mirar clase del martes para la relacion es muchos a muchos
-      // Product.
+      // Relación Many-to-Many con la tabla "Order" a través de la tabla intermedia "ProductOrder"
+      Product.belongsToMany(models.Order, {
+        through: models.ProductOrder,
+        foreignKey: 'productId',
+      });
     }
   }
 
@@ -19,9 +19,9 @@ module.exports = (sequelize, DataTypes) => {
     {
       productName: DataTypes.STRING,
       description: DataTypes.STRING,
-      CategoryId: DataTypes.INTEGER,
-      price: DataTypes.STRING,
-      stock: DataTypes.STRING
+      categoryId: DataTypes.INTEGER,
+      price: DataTypes.FLOAT,
+      stock: DataTypes.INTEGER,
     },
     {
       sequelize,
@@ -31,5 +31,3 @@ module.exports = (sequelize, DataTypes) => {
 
   return Product;
 };
-
-

@@ -4,18 +4,14 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Review extends Model {
     static associate(models) {
-      // Relationship between "Review" and "User" (many-to-one)
-      Review.belongsTo(models.User);
-
-      // Relationship between "Review" and "Products" (many-to-one)
-      Review.belongsTo(models.Product);
+      Review.belongsTo(models.User, { foreignKey: 'userId' });
+      Review.belongsTo(models.Product, { foreignKey: 'productId' });
     }
   }
 
   Review.init(
     {
-      UserId: DataTypes.INTEGER,
-      ProductId: DataTypes.INTEGER
+      reviewId: DataTypes.INTEGER,
     },
     {
       sequelize,
