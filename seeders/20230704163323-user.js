@@ -1,5 +1,7 @@
 "use strict";
 
+const bcrypt = require('bcrypt');
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     return queryInterface.bulkInsert("Users", [
@@ -7,7 +9,7 @@ module.exports = {
         name: "John",
         lastName: "Doe",
         email: "johndoe@example.com",
-        password: "password123",
+        password: await bcrypt.hash ("password123",10),
         address: "123 Main St",
         role: "customer",
         createdAt:new Date(),
@@ -17,7 +19,7 @@ module.exports = {
         name: "Jane",
         lastName: "Smith",
         email: "janesmith@example.com",
-        password: "securepass",
+        password: await bcrypt.hash ("securepass",10),
         address: "456 Elm St",
         role: "admin",
         createdAt:new Date(),
@@ -27,8 +29,7 @@ module.exports = {
         name: "Michael",
         lastName: "Johnson",
         email: "michaeljohnson@example.com",
-        password: "mysecretpassword",
-        address: "789 Oak St",
+        password: await bcrypt.hash ("mysecretpassword",10),
         role: "customer",
         createdAt:new Date(),
         updatedAt:new Date()
@@ -37,7 +38,7 @@ module.exports = {
         name: "Emily",
         lastName: "Brown",
         email: "emilybrown@example.com",
-        password: "12345678",
+        password: await bcrypt.hash ("12345678",10),
         address: "987 Pine St",
         role: "customer",
         createdAt:new Date(),
@@ -47,7 +48,7 @@ module.exports = {
         name: "William",
         lastName: "Miller",
         email: "williammiller@example.com",
-        password: "password",
+        password: await bcrypt.hash ("password",10),
         address: "654 Cedar St",
         role: "admin",
         createdAt:new Date(),
@@ -57,7 +58,7 @@ module.exports = {
         name: "Olivia",
         lastName: "Davis",
         email: "oliviadavis@example.com",
-        password: "secretpass",
+        password: await bcrypt.hash("secretpass", 10),
         address: "321 Birch St",
         role: "customer",
         createdAt:new Date(),
@@ -67,7 +68,7 @@ module.exports = {
         name: "James",
         lastName: "Anderson",
         email: "jamesanderson@example.com",
-        password: "pass123",
+        password: await bcrypt.hash("pass123", 10),
         address: "111 Maple St",
         role: "customer",
         createdAt:new Date(),
@@ -77,7 +78,7 @@ module.exports = {
         name: "Sophia",
         lastName: "Wilson",
         email: "sophiawilson@example.com",
-        password: "mysecretpass",
+        password:  await bcrypt.hash("mysecretpass", 10),
         address: "222 Oak St",
         role: "customer",
         createdAt:new Date(),
@@ -87,7 +88,7 @@ module.exports = {
         name: "Benjamin",
         lastName: "Taylor",
         email: "benjamintaylor@example.com",
-        password: "password1234",
+        password: await bcrypt.hash("password1234", 10),
         address: "333 Elm St",
         role: "customer",
         createdAt:new Date(),
@@ -97,7 +98,7 @@ module.exports = {
         name: "Ava",
         lastName: "Johnson",
         email: "avajohnson@example.com",
-        password: "securepassword",
+        password:  await bcrypt.hash("securepassword", 10),
         address: "444 Pine St",
         role: "customer",
         createdAt:new Date(),
@@ -115,4 +116,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
   },
+
+  
 };
