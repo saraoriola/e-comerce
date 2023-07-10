@@ -1,7 +1,9 @@
 const bcrypt = require('bcrypt');
-const { User, Order, Product, Token } = require('../models/index.js');
+const { User, Order, Product, Token, Sequelize } = require('../models/index.js');
 const jwt = require('jsonwebtoken');
-const { Op } = require('sequelize');
+const  {jwt_secret}  = require('../config/config.json')['development'];
+const { Op } = Sequelize;
+
 
 const UserController = {
   async registerUser(req, res) {
@@ -50,8 +52,8 @@ const UserController = {
       }
 
       // Generate the JWT token
-      const token = jwt.sign({ userId: user.id }, 'secretkey', { expiresIn: '1h' });
-
+      const token = jwt.sign({ id: user.id }, jwt_secret);
+await Token.create({UserId: user.id,token})
       res.json({ message: 'Login successful', token });
     } catch (error) {
       console.error(error);

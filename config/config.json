@@ -5,7 +5,7 @@
     "database": "e_commerce",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "jwt_secret":"123456"
+    "jwt_secret":"pass123456789"
   },
   "test": {
     "username": "root",

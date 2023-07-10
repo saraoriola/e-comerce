@@ -8,6 +8,7 @@ const authMiddleware = async(req, res, next) => {
         const token = req.headers.authorization;
         const payload = jwt.verify(token, jwt_secret);
         const user = await User.findByPk(payload.id);
+        console.log(user)
         const tokenFound = await Token.findOne({
             where: {
                 [Op.and]: [
@@ -19,7 +20,7 @@ const authMiddleware = async(req, res, next) => {
         if (!tokenFound) {
             return res.status(401).send({ message: 'You are not authorized' });
         }
-        req.userId = user;
+        req.user = user;
         next();
     } catch (error) {
         console.log(error)

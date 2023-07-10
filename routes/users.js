@@ -14,6 +14,6 @@ router.post('/login', UserController.loginUser); // Ruta para iniciar sesión
 router.get('/profile', authMiddleware, UserController.getUserProfile); // PENDIENTE
 
 //DELETE
-router.delete('/logout',authMiddleware,UserController.logout)
+router.delete('/logout', authMiddleware, UserController.logout); //Ruta para cerrar sesión
 
 module.exports = router;
