@@ -1,16 +1,17 @@
 'use strict';
 const { Model } = require('sequelize');
 
+// ProductOrder model definition
 module.exports = (sequelize, DataTypes) => {
   class ProductOrder extends Model {
     static associate(models) {
-      // No se necesita una asociación directa en este modelo
+      // No direct association is needed in this model
     }
   }
 
   ProductOrder.init(
     {
-      productId:DataTypes.INTEGER,
+      productId: DataTypes.INTEGER,
       orderId: DataTypes.INTEGER,
     },
     {

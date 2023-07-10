@@ -1,13 +1,14 @@
 'use strict';
 const { Model } = require('sequelize');
 
+// Product model definition
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
     static associate(models) {
-      // Relación Many-to-One con la tabla "Category"
+      // Many-to-One relationship with the "Category" table
       Product.belongsTo(models.Category, { foreignKey: 'categoryId' });
 
-      // Relación Many-to-Many con la tabla "Order" a través de la tabla intermedia "ProductOrder"
+      // Many-to-Many relationship with the "Order" table through the intermediate table "ProductOrder"
       Product.belongsToMany(models.Order, {
         through: models.ProductOrder,
         foreignKey: 'productId',
