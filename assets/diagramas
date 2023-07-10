@@ -14,7 +14,6 @@ description
 orders
 orderId
 userId
-shippingAdress
 totalPrice
 totalQuantity
 

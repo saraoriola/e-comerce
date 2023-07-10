@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const {authMiddleware, isAdmin} = require('../middleware/authMiddleware');
 
 // Import the category controller
 const CategoryController = require('../controllers/CategoryController');

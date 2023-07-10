@@ -3,7 +3,7 @@ const router = express.Router();
 
 // Importar el controlador de usuarios
 const UserController = require('../controllers/UserController');
-const {authMiddleware} = require('../middleware/authMiddleware');
+const {authMiddleware, isAdmin} = require('../middleware/authMiddleware');
 
 // Rutas para usuarios
 // CREATE

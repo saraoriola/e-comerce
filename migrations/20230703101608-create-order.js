@@ -12,16 +12,10 @@ module.exports = {
       UserId: {
         type: Sequelize.INTEGER
       },
-      ProductId: {
-        type: Sequelize.INTEGER
-      },
-      shipping_address: {
+      totalPrice: {
         type: Sequelize.STRING
       },
-      total_price: {
-        type: Sequelize.STRING
-      },
-      total_quantity: {
+      totalQuantity: {
         type: Sequelize.INTEGER
       },
       createdAt: {
