@@ -3,7 +3,7 @@ const router = express.Router();
 
 // Importar el controlador de usuarios
 const UserController = require('../controllers/UserController');
-const authMiddleware = require('../middleware/authMiddleware');
+const {authMiddleware} = require('../middleware/authMiddleware');
 
 // Rutas para usuarios
 // CREATE
@@ -14,6 +14,6 @@ router.post('/login', UserController.loginUser); // Ruta para iniciar sesión
 router.get('/profile', authMiddleware, UserController.getUserProfile); // PENDIENTE
 
 //DELETE
-router.delete('/logout',authentication,UserController.logout)
+router.delete('/logout',authMiddleware,UserController.logout)
 
 module.exports = router;

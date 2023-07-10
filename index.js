@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const {typeError} = require('./middleware/errors');
+const {typeError} = require('./middleware/error');
 const PORT = 3000;
 
 // Middleware
@@ -10,7 +10,7 @@ app.use(express.json());
 app.use('/categories', require('./routes/categories'));
 app.use('/products', require('./routes/products'));
 app.use('/users', require('./routes/users'));
-app.use("/orders", require("./routes/orders"));
+// app.use("/orders", require("./routes/orders"));
 
 //M. Errors
 app.use(typeError)
