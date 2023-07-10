@@ -1,11 +1,11 @@
-const bcrypt = require('bcrypt');
-const { User, Order, Product, Token, Sequelize } = require('../models/index.js');
-const jwt = require('jsonwebtoken');
-const  {jwt_secret}  = require('../config/config.json')['development'];
-const { Op } = Sequelize;
-
+const bcrypt = require('bcrypt'); // Importing the bcrypt library for password hashing
+const { User, Order, Product, Token, Sequelize } = require('../models/index.js'); // Importing models from the '../models/index.js' file
+const jwt = require('jsonwebtoken'); // Importing the jsonwebtoken library for JWT functionality
+const { jwt_secret } = require('../config/config.json')['development']; // Accessing the JWT secret from the configuration file
+const { Op } = Sequelize; // Accessing the Sequelize operator for complex queries
 
 const UserController = {
+  // To REGISTER a USER
   async registerUser(req, res) {
     const { name, lastName, email, password, address } = req.body;
 
@@ -35,6 +35,7 @@ const UserController = {
     }
   },
 
+  // To LOGIN a USER
   async loginUser(req, res) {
     const { email, password } = req.body;
 
@@ -53,7 +54,8 @@ const UserController = {
 
       // Generate the JWT token
       const token = jwt.sign({ id: user.id }, jwt_secret);
-await Token.create({UserId: user.id,token})
+      await Token.create({ UserId: user.id, token });
+
       res.json({ message: 'Login successful', token });
     } catch (error) {
       console.error(error);
@@ -61,6 +63,7 @@ await Token.create({UserId: user.id,token})
     }
   },
 
+  // To GET the USER PROFILE
   async getUserProfile(req, res) {
     const userId = req.user.id;
 
@@ -89,6 +92,7 @@ await Token.create({UserId: user.id,token})
     }
   },
 
+  // To LOGOUT a USER
   async logout(req, res) {
     try {
       const token = req.headers.authorization;
@@ -109,5 +113,7 @@ await Token.create({UserId: user.id,token})
     }
   },
 };
+
+module.exports = UserController;
 
 module.exports = UserController;
