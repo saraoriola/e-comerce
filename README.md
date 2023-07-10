@@ -1,33 +1,31 @@
-# e-Commerce
+# 🌐 e-Commerce
 
-API REST para una Tienda Online (E-commerce) con Node.js, Express y MySQL/Sequelize
-## Índice
+RESTful API for an e-commerce store using Node.js, Express, and MySQL/Sequelize
 
-1. [Introducción](#introducción)
-2. [Descripción](#descripción)
-3. [Requisitos del Proyecto](#requisitos-del-proyecto)
-4. [Tecnologías Utilizadas](#tecnologías-utilizadas)
+## 📝 Table of Contents
+
+1. [Introduction](#introduction)
+2. [Description](#description)
+3. [Project Requirements](#project-requirements)
+4. [Technologies Used](#technologies-used)
 5. [Endpoints](#endpoints)
-6. [Extra](#extra)
-7. [Entregables](#entregables)
+6. [Extras](#extras)
+7. [Deliverables](#deliverables)
 
-## Introducción
+## 📌 Introduction
 
-En este proyecto, hemos desarrollado una API REST para una tienda online (E-commerce) utilizando tecnologías como Node.js, Express y MySQL/Sequelize. Esta API permite a los usuarios registrar cuentas, autenticarse, realizar operaciones CRUD en productos y categorías, así como gestionar pedidos. 
+In this project, we have developed a RESTful API for an e-commerce store using technologies such as Node.js, Express, and MySQL/Sequelize. This API allows users to register accounts, authenticate, perform CRUD operations on products and categories, and manage orders.
 
-Implementamos funcionalidades esenciales como encriptación de contraseñas, generación de tokens JWT para la autenticación, y relaciones entre tablas para asegurar una experiencia completa y segura para los usuarios. 
+## 📄 Description
 
-A través de este proyecto, hemos buscado crear una solución robusta y escalable para potenciales comercios electrónicos, brindando una base sólida para el desarrollo de futuras aplicaciones de comercio electrónico.
-## Descripción
+Detailed explanation of the project, its objectives, and main functionalities. Also, mention the focus on creating a RESTful API using technologies like node + express, mysql/sequelize, and the required aspects like user registration and authentication, CRUD operations for products and categories, table relationships, use of seeders, etc.
 
-Explicación detallada del proyecto, sus objetivos y funcionalidades principales. También menciona el enfoque en la creación de una API REST utilizando las tecnologías node + express, mysql/sequelize, y los aspectos requeridos como el registro y autenticación de usuarios, CRUD de productos y categorías, relaciones entre tablas, uso de seeders, etc.
+## 🎯 Project Requirements
 
-## Requisitos del Proyecto
+- Usage of branches with Git, with the existence of "master" or "main" and "develop" branches.
+- Presentation of an excellent README.
 
-- Uso de ramas con Git, con la existencia de las ramas "master" o "main" y "develop".
-- Presentación de un excelente README.
-
-## Tecnologías Utilizadas
+## 💻 Technologies Used
 
 - Node.js
 - Express.js
@@ -35,51 +33,51 @@ Explicación detallada del proyecto, sus objetivos y funcionalidades principales
 - Sequelize
 - Bcrypt
 - JWT
-- Multer (en caso de implementarlo)
+- Multer (if implemented)
 
-Breve explicación de las tecnologías utilizadas en el proyecto.
+Brief explanation of the technologies used in the project.
 
-## Endpoints
+## 🌐 Endpoints
 
-A continuación se detallan los diferentes endpoints implementados en la API:
+The following are the different endpoints implemented in the API:
 
-- Productos
-  - CRUD productos
-  - Endpoint para crear un producto
-  - Endpoint para actualizar un producto
-  - Endpoint para eliminar un producto
-  - Endpoint para traer productos con sus categorías
-  - Endpoint para traer un producto por su id
-  - Filtros para buscar producto por nombre y precio
-  - Filtro para ordenar los productos de mayor a menor precio
+- Products
+  - CRUD operations for products
+  - Endpoint to create a product
+  - Endpoint to update a product
+  - Endpoint to delete a product
+  - Endpoint to retrieve products with their categories
+  - Endpoint to retrieve a product by its ID
+  - Filters to search for a product by name and price
+  - Filter to sort products by price from highest to lowest
 
-- Categorías
-  - CRUD categorías
-  - Endpoint para crear una categoría
-  - Endpoint para actualizar una categoría
-  - Endpoint para eliminar una categoría
-  - Endpoint para ver todas las categorías con sus productos
-  - Endpoint para traer una categoría por su id
-  - Filtro para buscar categoría por nombre
+- Categories
+  - CRUD operations for categories
+  - Endpoint to create a category
+  - Endpoint to update a category
+  - Endpoint to delete a category
+  - Endpoint to view all categories with their products
+  - Endpoint to retrieve a category by its ID
+  - Filter to search for a category by name
 
-- Pedidos
-  - Endpoint para ver los pedidos con los productos que contienen
-  - Endpoint para crear pedidos
+- Orders
+  - Endpoint to view orders with the products they contain
+  - Endpoint to create orders
 
-- Usuarios
-  - Endpoint para registrar un usuario utilizando bcrypt
-  - Endpoint para realizar login utilizando bcrypt + JWT
-  - Endpoint para obtener información del usuario conectado con sus pedidos y productos
-  - Endpoint para realizar logout
+- Users
+  - Endpoint to register a user using bcrypt
+  - Endpoint to log in using bcrypt + JWT
+  - Endpoint to retrieve information of the logged-in user with their orders and products
+  - Endpoint to log out
 
 - Seeders
-  - Creación de 5 productos mediante un seeder
+  - Creation of 5 products through a seeder
 
-## Extra
+## 🚀 Extras
 
-En caso de haber implementado las funcionalidades adicionales, aquí se pueden listar y explicar brevemente.
+List and briefly explain any additional functionalities implemented, if any.
 
-## Entregables
+## 📦 Deliverables
 
-- Repositorio en GitHub: [Enlace al repositorio](URL_DEL_REPOSITORIO)
-- Otros entregables requeridos
+- GitHub Repository: [Link to the repository](REPOSITORY_URL)
+- Other required deliverables
