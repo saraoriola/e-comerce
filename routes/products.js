@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const {authMiddleware, isAdmin} = require('../middleware/authMiddleware');
 
 // Import the product controller
 const ProductController = require('../controllers/ProductController');
-const {authMiddleware, isAdmin} = require('../middleware/authMiddleware');
 
 // Routes for products
 // CREATE

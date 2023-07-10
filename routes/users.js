@@ -1,19 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
-// Importar el controlador de usuarios
+// Import the user controller
 const UserController = require('../controllers/UserController');
-const {authMiddleware, isAdmin} = require('../middleware/authMiddleware');
+const { authMiddleware, isAdmin } = require('../middleware/authMiddleware');
 
-// Rutas para usuarios
+// Routes for users
 // CREATE
-router.post('/users', UserController.registerUser); // Ruta para crear un nuevo usuario
-router.post('/login', UserController.loginUser); // Ruta para iniciar sesión
+router.post('/users', UserController.registerUser); // Route to create a new user
+router.post('/login', UserController.loginUser); // Route to log in
 
-//READ
-router.get('/profile', authMiddleware, UserController.getUserProfile); // PENDIENTE
+// READ
+router.get('/profile', authMiddleware, UserController.getUserProfile); // PENDING
 
-//DELETE
-router.delete('/logout', authMiddleware, UserController.logout); //Ruta para cerrar sesión
+// DELETE
+router.delete('/logout', authMiddleware, UserController.logout); // Route to log out
 
 module.exports = router;

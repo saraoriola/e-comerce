@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
+
+// Import the order controller
 const OrderController = require('../controllers/OrderController');
 
-// Ruta para obtener todas las órdenes con sus productos
-router.get('/orders', OrderController.getOrders);
+// CREATE
+router.post('/orders', OrderController.createOrder); // Route to create a new order
 
-// Ruta para crear una nueva orden
-router.post('/orders', OrderController.createOrder);
+// READ
+router.get('/orders', OrderController.getOrders); // Route to get all orders with their products
 
 module.exports = router;
