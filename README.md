@@ -79,5 +79,5 @@ List and briefly explain any additional functionalities implemented, if any.
 
 ## 📦 Deliverables
 
-- GitHub Repository: [Link to the repository](REPOSITORY_URL)
+- GitHub Repository: [Link to the repository](https://github.com/saraoriola/e-comerce.git)
 - Other required deliverables
