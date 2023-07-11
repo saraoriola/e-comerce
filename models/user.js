@@ -7,7 +7,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // Define associations
       User.hasMany(models.Order, { foreignKey: 'userId' });
-      User.hasMany(models.Review, { foreignKey: 'userId' });
     }
   }
 
